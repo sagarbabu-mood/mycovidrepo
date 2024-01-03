@@ -15,7 +15,7 @@ const Footer = () => (
       </p>
       <div className="footer-icons-container">
         <a
-          href="https://github.com/SaiTejaPolisetty/covid-19Dashboard-React-Mini-Project-"
+          href="https://github.com/sairam4127/Mini-Project.git"
           title="view code of this project"
           target="_blank"
           rel="noreferrer"
