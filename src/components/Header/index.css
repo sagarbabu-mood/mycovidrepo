@@ -1,93 +1,75 @@
-.desktop-header-container {
-  width: 100%;
-  height: 80px;
-  background-color: #1e1e30;
+.header-container {
+  height: 56px;
+  background: #1e1e30;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  padding: 0px 100px;
-  position: fixed;
-  top: 0;
+  padding: 0px 25px 0px 25px;
+  width: 100vw;
 }
 
-.menuIcon {
-  color: #f8fafc;
-  width: 35px;
-  height: 20px;
+@media screen and (min-width: 768px) {
+  .header-container {
+    height: 80px;
+    padding: 0px 50px 0px 40px;
+  }
 }
 
-.logo {
-  font-family: 'Bree Serif';
-  font-size: 20px;
+.covid19-heading {
+  font-family: Bree Serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  letter-spacing: 0em;
+  text-align: center;
+  width: 104px;
+  height: 24px;
+  top: 16px;
+  left: 24px;
   color: #f8fafc;
 }
-.india {
+
+@media screen and (min-width: 768px) {
+  .covid19-heading {
+    font-size: 20px;
+    width: 130px;
+    height: 24px;
+    top: 28px;
+    left: 150px;
+  }
+}
+
+.india-span {
   color: #3b82f6;
 }
 
-.navBar {
+.header-home-element {
+  font-family: Roboto;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 24px;
+  letter-spacing: 0em;
+  text-align: left;
+  width: 43px;
+  height: 24px;
+  top: 28px;
+  left: 1156px;
+  color: #94a3b8;
+}
+
+.desktop-navigation-container {
   display: flex;
   flex-direction: row;
-  align-items: center;
-  background-color: #1e1e30;
+  justify-content: space-between;
 }
 
-.item {
-  list-style: none;
-  font-family: Roboto;
-  font-weight: 500;
-  font-size: 16px;
-  line-height: 24px;
-  color: #94a3b8;
-  margin: 0px 16px;
-}
-
-.link {
-  text-decoration: none;
-}
-
-.toggle-button {
-  background-color: transparent;
-  outline: none;
-  border: none;
-}
-
-.mobile-header-container {
-  display: none;
-}
-
-@media (max-width: 600px) {
-  .mobile-header-container {
-    display: block;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    min-height: 80px;
-    background-color: #1e1e30;
-    padding: 0px 10px;
-    /* position: fixed;
-    top: 0; */
-  }
-
-  .desktop-header-container {
+@media screen and (max-width: 767px) {
+  .desktop-navigation-container {
     display: none;
   }
-  .navBar {
-    margin: 0px;
-    padding: 0px;
-  }
 }
-.menu {
-  background-color: #1e1e30;
-  margin: 0px;
-  padding-bottom: 10px;
-}
-button {
-  cursor: pointer;
-}
-.mobile-header-item {
-  list-style-type: none;
+
+.link-element {
+  padding-left: 20px;
 }

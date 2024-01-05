@@ -1,0 +1,72 @@
+.not-found-container {
+  background: #161625;
+  width: 100vw;
+  height: 100vh;
+  padding: 40px 25px 0px 45px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.home-button {
+  width: Hug (88px);
+  height: Hug (48px);
+  top: 722px;
+  left: 676px;
+  border-radius: 4px;
+}
+
+.not-found-image {
+  width: 242px;
+  height: 162px;
+}
+
+@media screen and (min-width: 768px) {
+  .not-found-image {
+    width: 448px;
+    height: 300px;
+  }
+}
+
+.not-found-heading {
+  font-family: Roboto;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 24px;
+  letter-spacing: 0em;
+  text-align: center;
+  color: #e2e8f0;
+  width: 115px;
+  height: 24px;
+  top: 356px;
+}
+
+@media screen and (min-width: 768px) {
+  .not-found-heading {
+  }
+}
+
+.not-found-description {
+  font-family: Roboto;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 20px;
+  letter-spacing: 0em;
+  text-align: center;
+  width: 290px;
+  height: 40px;
+  top: 388px;
+  color: #94a3b8;
+}
+
+@media screen and (min-width: 768px) {
+  .not-found-description {
+    font-family: Roboto;
+    font-size: 20px;
+    line-height: 32px;
+    width: 483px;
+    height: 64px;
+    top: 626px;
+  }
+}
