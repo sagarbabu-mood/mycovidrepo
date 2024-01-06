@@ -10,11 +10,20 @@
 }
 
 .home-button {
-  width: Hug (88px);
-  height: Hug (48px);
-  top: 722px;
-  left: 676px;
+  width: 66px;
+  height: 22px;
+  background-color: #007bff;
+  color: #ffffff;
   border-radius: 4px;
+  border: 0;
+  margin-top: 10px;
+}
+
+@media screen and (min-width: 768px) {
+  .home-button {
+    width: 88px;
+    height: 30px;
+  }
 }
 
 .not-found-image {
@@ -37,13 +46,17 @@
   letter-spacing: 0em;
   text-align: center;
   color: #e2e8f0;
-  width: 115px;
   height: 24px;
   top: 356px;
+  margin-top: 15px;
 }
 
 @media screen and (min-width: 768px) {
   .not-found-heading {
+    font-size: 32px;
+    line-height: 48px;
+    letter-spacing: 0em;
+    height: 48px;
   }
 }
 

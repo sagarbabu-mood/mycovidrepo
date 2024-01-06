@@ -26,7 +26,7 @@ class About extends Component {
       <>
         <Header />
         <div className="home-container">
-          <div>
+          <div className="about-covid-container">
             <h1 className="about-heading">About</h1>
             <p className="about-last-update">Last update on march 28th 2021.</p>
             <p className="about-covid-distribution">
