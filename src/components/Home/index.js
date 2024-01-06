@@ -160,7 +160,7 @@ const iconStyle = {
 }
 
 class Home extends Component {
-  state = {isLoading: false, searchInput: 't'}
+  state = {isLoading: false, searchInput: ''}
 
   onUpdateSearchInput = event => {
     this.setState({searchInput: event.target.value})
@@ -210,6 +210,7 @@ class Home extends Component {
                     style={iconStyle}
                   />
                   <input
+                    value={searchInput}
                     onChange={this.onUpdateSearchInput}
                     type="search"
                     placeholder="Enter the State"
