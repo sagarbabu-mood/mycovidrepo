@@ -66,23 +66,11 @@
   width: 100%;
   background-color: inherit;
   color: inherit;
-  padding-right: 20px;
+  padding-left: 0;
 }
 
-.search-item {
-  width: 100%;
-  background-color: #161625;
-  border: 0;
+.home-stats-container {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
-  margin-top: 4px;
-}
-
-.search-item-state-name {
-  font-size: 16px;
-  font-weight: 400;
-  line-height: 24px;
-  letter-spacing: 0px;
-  text-align: left;
+  justify-content: space-evenly;
 }

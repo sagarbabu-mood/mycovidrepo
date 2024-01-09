@@ -1,11 +1,11 @@
 import {Component} from 'react'
 import Loader from 'react-loader-spinner'
 import {BsSearch} from 'react-icons/bs'
-import {BiChevronRightSquare} from 'react-icons/bi'
 
 import Header from '../Header'
 import './index.css'
 import Footer from '../Footer'
+import SearchItem from '../SearchItem'
 
 const statesList = [
   {
@@ -160,7 +160,63 @@ const iconStyle = {
 }
 
 class Home extends Component {
-  state = {isLoading: false, searchInput: ''}
+  state = {isLoading: true, stateWiseData: [], searchInput: ''}
+
+  componentDidMount() {
+    this.getCovidData()
+  }
+
+  getCovidData = async () => {
+    const apiUrl = 'https://apis.ccbp.in/covid19-state-wise-data'
+
+    const response = await fetch(apiUrl)
+    const data = await response.json()
+
+    function convertObjectsDataIntoListItemsUsingForInMethod() {
+      const resultList = []
+      // getting keys of an object object
+      const keyNames = Object.keys(data)
+
+      keyNames.forEach(keyName => {
+        // console.log(keyName)
+        if (data[keyName]) {
+          const {total} = data[keyName]
+          // if the state's covid data is available we will store it or we will store 0
+          const confirmed = total.confirmed ? total.confirmed : 0
+          const deceased = total.deceased ? total.deceased : 0
+          const recovered = total.recovered ? total.recovered : 0
+          const tested = total.tested ? total.tested : 0
+          const population = data[keyName].meta.population
+            ? data[keyName].meta.population
+            : 0
+
+          let stateName
+          const name = statesList.find(state => state.state_code === keyName)
+          if (name !== undefined) {
+            stateName = name.state_name
+          }
+
+          resultList.push({
+            stateCode: keyName,
+            name: stateName,
+            confirmed,
+            deceased,
+            recovered,
+            tested,
+            population,
+            active: confirmed - (deceased + recovered),
+          })
+        }
+      })
+      return resultList
+    }
+
+    const listFormattedDataUsingForInMethod = convertObjectsDataIntoListItemsUsingForInMethod()
+    this.setState({
+      stateWiseData: listFormattedDataUsingForInMethod,
+      isLoading: false,
+    })
+  }
 
   onUpdateSearchInput = event => {
     this.setState({searchInput: event.target.value})
@@ -172,16 +228,74 @@ class Home extends Component {
       testid="searchResultsUnorderedList"
     >
       {filteredStatesList.map(eachState => (
-        <li className="search-item" key={eachState.state_code}>
-          <p className="search-item-state-name">{eachState.state_name}</p>
-          <div>
-            <p>{eachState.state_code}</p>
-            <BiChevronRightSquare />
-          </div>
-        </li>
+        <SearchItem key={eachState.stateCode} stateDetails={eachState} />
       ))}
     </ul>
   )
+
+  formatData = filteredStatesList =>
+    filteredStatesList.map(eachState => ({
+      stateName: eachState.state_name,
+      stateCode: eachState.state_code,
+    }))
+
+  displayStats = () => {
+    const {stateWiseData} = this.state
+    console.log(stateWiseData)
+
+    let totalConfirmed = 0
+    let totalActive = 0
+    let totalRecovered = 0
+    let totalDeceased = 0
+
+    // Iterate through the array and update the counters
+    stateWiseData.forEach(state => {
+      totalConfirmed += state.confirmed
+      totalActive += state.active
+      totalRecovered += state.recovered
+      totalDeceased += state.deceased
+    })
+
+    return (
+      <div className="home-stats-container">
+        <div testid="countryWideConfirmedCases" className="stats-card">
+          <p>Confirmed</p>
+          <img
+            src="https://res.cloudinary.com/dud61kulq/image/upload/v1704783712/check-mark_1_g5hjpm.png"
+            alt="country wide confirmed cases pic"
+          />
+          <p>{totalConfirmed}</p>
+        </div>
+
+        <div testid="countryWideActiveCases" className="stats-card">
+          <p>Confirmed</p>
+          <img
+            src="https://res.cloudinary.com/dud61kulq/image/upload/v1704784311/protection_1_e8go1f.png"
+            alt="country wide active cases pic"
+          />
+          <p>{totalActive}</p>
+        </div>
+
+        <div testid="countryWideRecoveredCases" className="stats-card">
+          <p>Confirmed</p>
+          <img
+            src="https://res.cloudinary.com/dud61kulq/image/upload/v1704784351/recovered_1_dzmw1c.png"
+            alt="country wide recovered cases pic"
+          />
+          <p>{totalRecovered}</p>
+        </div>
+
+        <div testid="countryWideDeceasedCases" className="stats-card">
+          <p>Confirmed</p>
+          <img
+            src="https://res.cloudinary.com/dud61kulq/image/upload/v1704784383/breathing_1_vmb8gm.png"
+            alt="country wide deceased cases pic"
+          />
+          <p>{totalDeceased}</p>
+        </div>
+      </div>
+    )
+  }
 
   render() {
     const {isLoading, searchInput} = this.state
@@ -190,7 +304,7 @@ class Home extends Component {
       eachState.state_name.toLowerCase().includes(searchInput.toLowerCase()),
     )
 
-    console.log(filteredStatesList)
+    const formattedSearchStates = this.formatData(filteredStatesList)
 
     return (
       <>
@@ -219,7 +333,8 @@ class Home extends Component {
                 </div>
 
                 {searchInput !== '' &&
-                  this.displaySearchResults(filteredStatesList)}
+                  this.displaySearchResults(formattedSearchStates)}
+                {this.displayStats()}
               </div>
             </>
           )}
