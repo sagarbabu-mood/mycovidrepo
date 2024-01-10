@@ -10,8 +10,7 @@ const NotFound = () => (
     />
     <h1 className="not-found-heading">PAGE NOT FOUND</h1>
     <p className="not-found-description">
-      we’re sorry, the page you requested could not be found Please go back to
-      the homepage
+      we are sorry, the page you requested could not be found
     </p>
     <Link to="/">
       <button className="home-button" type="button">

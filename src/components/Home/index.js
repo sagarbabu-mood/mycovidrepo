@@ -1,6 +1,7 @@
 import {Component} from 'react'
 import Loader from 'react-loader-spinner'
 import {BsSearch} from 'react-icons/bs'
+import {FcGenericSortingAsc, FcGenericSortingDesc} from 'react-icons/fc'
 
 import Header from '../Header'
 import './index.css'
@@ -241,7 +242,6 @@ class Home extends Component {
 
   displayStats = () => {
     const {stateWiseData} = this.state
-    console.log(stateWiseData)
 
     let totalConfirmed = 0
     let totalActive = 0
@@ -258,40 +258,124 @@ class Home extends Component {
 
     return (
       <div className="home-stats-container">
-        <div testid="countryWideConfirmedCases" className="stats-card">
-          <p>Confirmed</p>
+        <div
+          testid="countryWideConfirmedCases"
+          className="stats-card confirmed-container"
+        >
+          <p className="stats-name">Confirmed</p>
           <img
             src="https://res.cloudinary.com/dud61kulq/image/upload/v1704783712/check-mark_1_g5hjpm.png"
             alt="country wide confirmed cases pic"
           />
-          <p>{totalConfirmed}</p>
+          <p className="stats-count">{totalConfirmed}</p>
         </div>
 
-        <div testid="countryWideActiveCases" className="stats-card">
-          <p>Confirmed</p>
+        <div
+          testid="countryWideActiveCases"
+          className="stats-card active-container"
+        >
+          <p className="stats-name">Active</p>
           <img
             src="https://res.cloudinary.com/dud61kulq/image/upload/v1704784311/protection_1_e8go1f.png"
             alt="country wide active cases pic"
           />
-          <p>{totalActive}</p>
+          <p className="stats-count">{totalActive}</p>
         </div>
 
-        <div testid="countryWideRecoveredCases" className="stats-card">
-          <p>Confirmed</p>
+        <div
+          testid="countryWideRecoveredCases"
+          className="stats-card recovered-container"
+        >
+          <p className="stats-name">Recovered</p>
           <img
             src="https://res.cloudinary.com/dud61kulq/image/upload/v1704784351/recovered_1_dzmw1c.png"
             alt="country wide recovered cases pic"
           />
-          <p>{totalRecovered}</p>
+          <p className="stats-count">{totalRecovered}</p>
         </div>
 
-        <div testid="countryWideDeceasedCases" className="stats-card">
-          <p>Confirmed</p>
+        <div
+          testid="countryWideDeceasedCases"
+          className="stats-card deceased-container"
+        >
+          <p className="stats-name">Deceased</p>
           <img
             src="https://res.cloudinary.com/dud61kulq/image/upload/v1704784383/breathing_1_vmb8gm.png"
             alt="country wide deceased cases pic"
           />
-          <p>{totalDeceased}</p>
+          <p className="stats-count">{totalDeceased}</p>
+        </div>
+      </div>
+    )
+  }
+
+  displayStateWiseCovidDataTable = () => {
+    const {stateWiseData} = this.state
+    console.log(stateWiseData)
+    return (
+      <div
+        className="state-wise-covid-data-table"
+        testid="stateWiseCovidDataTable"
+      >
+        <div className="covid-data-table-header">
+          <div className="state-ut-icons-container">
+            <p className="states-ut">States/UT</p>
+            <FcGenericSortingAsc />
+            <FcGenericSortingDesc />
+          </div>
+          <p>Confirmed</p>
+          <p>Active</p>
+          <p>Recovered</p>
+          <p>Deceased</p>
+          <p>Population</p>
+        </div>
+        <hr className="covid-data-table-hr-line" />
+        <div className="covid-data-table-stats-container">
+          <ul className="covid-data-table-state-names">
+            {stateWiseData.map(eachState => (
+              <li
+                className="covid-data-table-item name"
+                key={eachState.stateCode}
+              >
+                <p>{eachState.name}</p>
+              </li>
+            ))}
+          </ul>
+          <ul className="covid-data-table-confirmed-count">
+            {stateWiseData.map(eachState => (
+              <li className="covid-data-table-item" key={eachState.stateCode}>
+                <p key={eachState.stateCode}>{eachState.confirmed}</p>
+              </li>
+            ))}
+          </ul>
+          <ul className="covid-data-table-active-count">
+            {stateWiseData.map(eachState => (
+              <li className="covid-data-table-item" key={eachState.stateCode}>
+                <p key={eachState.stateCode}>{eachState.active}</p>
+              </li>
+            ))}
+          </ul>
+          <ul className="covid-data-table-recovered-count">
+            {stateWiseData.map(eachState => (
+              <li className="covid-data-table-item" key={eachState.stateCode}>
+                <p key={eachState.stateCode}>{eachState.recovered}</p>
+              </li>
+            ))}
+          </ul>
+          <ul className="covid-data-table-deceased-count">
+            {stateWiseData.map(eachState => (
+              <li className="covid-data-table-item" key={eachState.stateCode}>
+                <p key={eachState.stateCode}>{eachState.deceased}</p>
+              </li>
+            ))}
+          </ul>
+          <ul className="covid-data-table-deceased-count">
+            {stateWiseData.map(eachState => (
+              <li className="covid-data-table-item" key={eachState.stateCode}>
+                <p key={eachState.stateCode}>{eachState.population}</p>
+              </li>
+            ))}
+          </ul>
         </div>
       </div>
     )
@@ -335,6 +419,7 @@ class Home extends Component {
                 {searchInput !== '' &&
                   this.displaySearchResults(formattedSearchStates)}
                 {this.displayStats()}
+                {this.displayStateWiseCovidDataTable()}
               </div>
             </>
           )}

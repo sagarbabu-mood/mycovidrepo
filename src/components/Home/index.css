@@ -17,7 +17,7 @@
 }
 
 .search-container {
-  width: 100%;
+  width: 80%;
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
@@ -72,5 +72,229 @@
 .home-stats-container {
   display: flex;
   flex-direction: row;
-  justify-content: space-evenly;
+  justify-content: space-around;
+  width: 100%;
+  flex-wrap: wrap;
+}
+
+.stats-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.confirmed-container {
+  color: #ff073a;
+  font-family: 'Roboto';
+}
+
+.active-container {
+  font-family: 'Roboto';
+  color: #007bff;
+}
+
+.recovered-container {
+  color: #28a745;
+  font-family: 'Roboto';
+}
+
+.deceased-container {
+  color: #6c757d;
+  font-family: 'Roboto';
+}
+
+.stats-name {
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 16px;
+  letter-spacing: 0px;
+  text-align: center;
+  padding-bottom: 10px;
+}
+
+@media screen and (min-width: 768px) {
+  .stats-name {
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 24px;
+    letter-spacing: 0px;
+    text-align: left;
+  }
+}
+
+.stats-count {
+  padding-top: 10px;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 24px;
+  letter-spacing: 0px;
+  text-align: center;
+}
+
+@media screen and (min-width: 768px) {
+  .stats-count {
+    padding-top: 15px;
+  }
+}
+
+.state-wise-covid-data-table {
+  margin-top: 80px;
+  width: 100%;
+  border: 1px solid #475569;
+  box-shadow: 0px 4px 16px 0px #00000029;
+  background: linear-gradient(0deg, #1e1e30, #1e1e30);
+  border-radius: 6px;
+  overflow-x: scroll;
+  scrollbar-width: thin;
+  scrollbar-color: transparent transparent;
+  height: 100%;
+}
+
+@media (max-width: 768px) {
+  .state-wise-covid-data-table {
+    width: 85vw;
+  }
+}
+
+.covid-data-table-header {
+  width: 100vw;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  color: #f8fafc;
+  font-family: 'Roboto';
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 24px;
+  letter-spacing: 0em;
+  text-align: left;
+  height: 50px;
+}
+
+/* @media screen and (min-width: 768px) {
+  .covid-data-table-header {
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 24px;
+    letter-spacing: 0em;
+    text-align: left;
+  }
+} */
+
+.state-ut-icons-container {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+}
+
+.states-ut {
+  padding-right: 10px;
+}
+
+.covid-data-table-hr-line {
+  border: 1px solid #475569;
+  color: #475569;
+  height: 1px;
+  width: 100vw;
+}
+
+.covid-data-table-stats-container {
+  width: 100vw;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  color: #f8fafc;
+  font-family: 'Roboto';
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 24px;
+  letter-spacing: 0em;
+  text-align: left;
+  height: 100%;
+  margin-top: 15px;
+}
+
+.covid-data-table-state-names {
+  width: 190px;
+  font-family: 'Roboto';
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 24px;
+  color: #f1f5f9;
+  letter-spacing: 0em;
+  text-align: left;
+  padding-left: 0;
+}
+
+.covid-data-table-confirmed-count {
+  text-align: right;
+  font-family: 'Roboto';
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 24px;
+  letter-spacing: 0em;
+  text-align: right;
+  color: #ff073a;
+  padding-left: 0;
+  padding-top: 10px;
+}
+
+.covid-data-table-active-count {
+  text-align: right;
+  width: 43px;
+  font-family: 'Roboto';
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 24px;
+  letter-spacing: 0em;
+  text-align: right;
+  color: #007bff;
+  padding-left: 0;
+  padding-top: 10px;
+}
+
+.covid-data-table-recovered-count {
+  text-align: right;
+  font-family: 'Roboto';
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 24px;
+  letter-spacing: 0em;
+  text-align: right;
+  color: #28a745;
+  padding-left: 0;
+  padding-top: 10px;
+}
+
+.covid-data-table-deceased-count {
+  text-align: right;
+  font-family: Roboto;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 24px;
+  letter-spacing: 0em;
+  text-align: right;
+  color: #6c757d;
+  padding-left: 0;
+  padding-top: 10px;
+}
+
+.covid-data-table-item {
+  font-family: 'Roboto';
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 24px;
+  letter-spacing: 0em;
+  text-align: left;
+  padding-top: 10px;
+  padding-bottom: 15px;
+  text-align: right;
+}
+
+.name {
+  text-align: left;
 }
