@@ -161,7 +161,12 @@ const iconStyle = {
 }
 
 class Home extends Component {
-  state = {isLoading: true, stateWiseData: [], searchInput: ''}
+  state = {
+    isLoading: true,
+    stateWiseData: [],
+    searchInput: '',
+    displayStatsAsc: true,
+  }
 
   componentDidMount() {
     this.getCovidData()
@@ -240,6 +245,14 @@ class Home extends Component {
       stateCode: eachState.state_code,
     }))
 
+  onDisplayStatsDescWise = () => {
+    this.setState({displayStatsAsc: false})
+  }
+
+  onDisplayStatsAscWise = () => {
+    this.setState({displayStatsAsc: true})
+  }
+
   displayStats = () => {
     const {stateWiseData} = this.state
 
@@ -310,18 +323,62 @@ class Home extends Component {
   }
 
   displayStateWiseCovidDataTable = () => {
-    const {stateWiseData} = this.state
-    console.log(stateWiseData)
+    const {displayStatsAsc, stateWiseData} = this.state
+
+    if (displayStatsAsc) {
+      stateWiseData.sort((a, b) => {
+        const nameA = a.name // ignore upper and lowercase
+        const nameB = b.name // ignore upper and lowercase
+        if (nameA < nameB) {
+          return -1
+        }
+        if (nameA > nameB) {
+          return 1
+        }
+
+        // names must be equal
+        return 0
+      })
+    } else {
+      stateWiseData.sort((a, b) => {
+        const nameA = a.name // ignore upper and lowercase
+        const nameB = b.name // ignore upper and lowercase
+        if (nameA < nameB) {
+          return 1
+        }
+        if (nameA > nameB) {
+          return -1
+        }
+
+        // names must be equal
+        return 0
+      })
+    }
+
     return (
       <div
-        className="state-wise-covid-data-table"
         testid="stateWiseCovidDataTable"
+        className="state-wise-covid-data-table"
       >
         <div className="covid-data-table-header">
           <div className="state-ut-icons-container">
             <p className="states-ut">States/UT</p>
-            <FcGenericSortingAsc />
-            <FcGenericSortingDesc />
+            <button
+              testid="ascendingSort"
+              className="button-icon"
+              type="button"
+              onClick={this.onDisplayStatsAscWise}
+            >
+              <FcGenericSortingAsc />
+            </button>
+            <button
+              testid="descendingSort"
+              className="button-icon"
+              type="button"
+              onClick={this.onDisplayStatsDescWise}
+            >
+              <FcGenericSortingDesc />
+            </button>
           </div>
           <p>Confirmed</p>
           <p>Active</p>
@@ -337,42 +394,42 @@ class Home extends Component {
                 className="covid-data-table-item name"
                 key={eachState.stateCode}
               >
-                <p>{eachState.name}</p>
+                {eachState.name}
               </li>
             ))}
           </ul>
           <ul className="covid-data-table-confirmed-count">
             {stateWiseData.map(eachState => (
               <li className="covid-data-table-item" key={eachState.stateCode}>
-                <p key={eachState.stateCode}>{eachState.confirmed}</p>
+                {eachState.confirmed}
               </li>
             ))}
           </ul>
           <ul className="covid-data-table-active-count">
             {stateWiseData.map(eachState => (
               <li className="covid-data-table-item" key={eachState.stateCode}>
-                <p key={eachState.stateCode}>{eachState.active}</p>
+                {eachState.active}
               </li>
             ))}
           </ul>
           <ul className="covid-data-table-recovered-count">
             {stateWiseData.map(eachState => (
               <li className="covid-data-table-item" key={eachState.stateCode}>
-                <p key={eachState.stateCode}>{eachState.recovered}</p>
+                {eachState.recovered}
               </li>
             ))}
           </ul>
           <ul className="covid-data-table-deceased-count">
             {stateWiseData.map(eachState => (
               <li className="covid-data-table-item" key={eachState.stateCode}>
-                <p key={eachState.stateCode}>{eachState.deceased}</p>
+                {eachState.deceased}
               </li>
             ))}
           </ul>
           <ul className="covid-data-table-deceased-count">
             {stateWiseData.map(eachState => (
               <li className="covid-data-table-item" key={eachState.stateCode}>
-                <p key={eachState.stateCode}>{eachState.population}</p>
+                {eachState.population}
               </li>
             ))}
           </ul>

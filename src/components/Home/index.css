@@ -298,3 +298,11 @@
 .name {
   text-align: left;
 }
+
+.button-icon {
+  background: transparent;
+  border: 0;
+  width: 20px;
+  height: 20px;
+  margin-top: 4px;
+}
