@@ -7,6 +7,7 @@ import Header from '../Header'
 import './index.css'
 import Footer from '../Footer'
 import SearchItem from '../SearchItem'
+import HomeStateWiseData from '../HomeStateWiseData'
 
 const statesList = [
   {
@@ -204,7 +205,7 @@ class Home extends Component {
 
           resultList.push({
             stateCode: keyName,
-            name: stateName,
+            stateName,
             confirmed,
             deceased,
             recovered,
@@ -327,8 +328,8 @@ class Home extends Component {
 
     if (displayStatsAsc) {
       stateWiseData.sort((a, b) => {
-        const nameA = a.name // ignore upper and lowercase
-        const nameB = b.name // ignore upper and lowercase
+        const nameA = a.stateName // ignore upper and lowercase
+        const nameB = b.stateName // ignore upper and lowercase
         if (nameA < nameB) {
           return -1
         }
@@ -341,8 +342,8 @@ class Home extends Component {
       })
     } else {
       stateWiseData.sort((a, b) => {
-        const nameA = a.name // ignore upper and lowercase
-        const nameB = b.name // ignore upper and lowercase
+        const nameA = a.stateName // ignore upper and lowercase
+        const nameB = b.stateName // ignore upper and lowercase
         if (nameA < nameB) {
           return 1
         }
@@ -354,7 +355,6 @@ class Home extends Component {
         return 0
       })
     }
-
     return (
       <div
         testid="stateWiseCovidDataTable"
@@ -387,18 +387,25 @@ class Home extends Component {
           <p>Population</p>
         </div>
         <hr className="covid-data-table-hr-line" />
-        <div className="covid-data-table-stats-container">
-          <ul className="covid-data-table-state-names">
-            {stateWiseData.map(eachState => (
+        <ul className="covid-data-table-stats">
+          {stateWiseData.map(eachState => (
+            <HomeStateWiseData
+              stateData={eachState}
+              key={eachState.stateCode}
+            />
+          ))}
+        </ul>
+        {/* <ul className="covid-data-table-state-names">
+             {stateWiseData.map(eachState => (
               <li
                 className="covid-data-table-item name"
                 key={eachState.stateCode}
               >
                 {eachState.name}
               </li>
-            ))}
-          </ul>
-          <ul className="covid-data-table-confirmed-count">
+            ))} 
+          </ul> */}
+        {/* <ul className="covid-data-table-confirmed-count">
             {stateWiseData.map(eachState => (
               <li className="covid-data-table-item" key={eachState.stateCode}>
                 {eachState.confirmed}
@@ -433,7 +440,7 @@ class Home extends Component {
               </li>
             ))}
           </ul>
-        </div>
+       */}
       </div>
     )
   }

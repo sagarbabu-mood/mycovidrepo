@@ -283,21 +283,6 @@
   padding-top: 10px;
 }
 
-.covid-data-table-item {
-  font-family: 'Roboto';
-  font-size: 14px;
-  font-weight: 500;
-  line-height: 24px;
-  letter-spacing: 0em;
-  text-align: left;
-  padding-top: 10px;
-  padding-bottom: 15px;
-  text-align: right;
-}
-
-.name {
-  text-align: left;
-}
 
 .button-icon {
   background: transparent;
@@ -305,4 +290,8 @@
   width: 20px;
   height: 20px;
   margin-top: 4px;
+}
+
+.covid-data-table-stats{
+    padding-left: 0;
 }

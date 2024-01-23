@@ -1,0 +1,29 @@
+.home-covid-data-table-item {
+  width: 100vw;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  color: #f8fafc;
+  font-family: 'Roboto';
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 24px;
+  letter-spacing: 0em;
+  height: 50px;
+}
+
+.covid-data-table-item {
+  font-family: 'Roboto';
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 24px;
+  letter-spacing: 0em;
+  text-align: left;
+  padding-top: 10px;
+  padding-bottom: 15px;
+  text-align: right;
+}
+
+.name {
+  text-align: left;
+}

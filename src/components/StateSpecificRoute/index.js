@@ -2,6 +2,9 @@ import {Component} from 'react'
 import Loader from 'react-loader-spinner'
 
 import Header from '../Header'
+import DisplayCards from '../DisplayCards'
+import Footer from '../Footer'
+import './index.css'
 
 const statesList = [
   {
@@ -151,7 +154,7 @@ const statesList = [
 ]
 
 class StateSpecificRoute extends Component {
-  state = {isLoading: true, specificStateData: {}}
+  state = {isLoading: true, specificStateData: {}, activeCard: 'CONFIRMED'}
 
   componentDidMount() {
     this.getStateWiseCovidData()
@@ -161,7 +164,7 @@ class StateSpecificRoute extends Component {
     const {match} = this.props
     const {params} = match
     const {stateCode} = params
-    console.log(stateCode)
+    //  console.log(stateCode)
     const apiUrl = 'https://apis.ccbp.in/covid19-state-wise-data'
     const response = await fetch(apiUrl)
     const data = await response.json()
@@ -181,6 +184,7 @@ class StateSpecificRoute extends Component {
           const population = data[keyName].meta.population
             ? data[keyName].meta.population
             : 0
+          const lastUpdated = data[keyName].meta.last_updated
           let stateName
           const name = statesList.find(state => state.state_code === keyName)
           if (name !== undefined) {
@@ -188,12 +192,13 @@ class StateSpecificRoute extends Component {
           }
           resultList.push({
             stateCode: keyName,
-            name: stateName,
+            stateName,
             confirmed,
             deceased,
             recovered,
             tested,
             population,
+            lastUpdated,
             active: confirmed - (deceased + recovered),
           })
         }
@@ -206,11 +211,53 @@ class StateSpecificRoute extends Component {
     const respectiveStateValue = listFormattedDataUsingForInMethod.find(
       each => each.stateCode === stateCode,
     )
-    console.log(respectiveStateValue)
+    this.setState({isLoading: false, specificStateData: respectiveStateValue})
+    // console.log(respectiveStateValue)
+  }
+
+  displayStateNameAndTestedCount = () => {
+    const {specificStateData} = this.state
+    const {tested, lastUpdated, stateName} = specificStateData
+
+    const date = new Date(lastUpdated)
+
+    const options = {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric',
+    }
+
+    const dayWithOrdinal = number => {
+      const suffixes = ['th', 'st', 'nd', 'rd']
+      const v = number % 100
+      return number + (suffixes[(v - 20) % 10] || suffixes[v] || suffixes[0])
+    }
+
+    const formattedDate = date.toLocaleDateString('en-US', options)
+    //  console.log(formattedDate)
+    const dayWithoutComma = new Array(formattedDate.replace(',', '').split(' '))
+    dayWithoutComma[0][1] = dayWithOrdinal(date.getDate())
+
+    const resultDate = `Last update on ${dayWithoutComma[0].join(' ')}.`
+
+    return (
+      <div className="state-specific-name-and-tested-container">
+        <div className="state-specific-name-and-date-container">
+          <div className="state-specific-name-container">
+            <p className="state-specific-name">{stateName}</p>
+          </div>
+          <p className="state-specific-date">{resultDate}</p>
+        </div>
+        <div className="state-specific-tested-container">
+          <p className="state-specific-tested">Tested</p>
+          <p className="state-specific-tested-count">{tested}</p>
+        </div>
+      </div>
+    )
   }
 
   render() {
-    const {isLoading} = this.state
+    const {isLoading, specificStateData, activeCard} = this.state
     return (
       <>
         <Header />
@@ -220,8 +267,15 @@ class StateSpecificRoute extends Component {
               <Loader type="Oval" color="#00BFFF" height={50} width={50} />
             </div>
           ) : (
-            <p>Sagar</p>
+            <div className="search-main-container">
+              {this.displayStateNameAndTestedCount()}
+              <DisplayCards
+                specificStateData={specificStateData}
+                activeCard={activeCard}
+              />
+            </div>
           )}
+          <Footer />
         </div>
       </>
     )

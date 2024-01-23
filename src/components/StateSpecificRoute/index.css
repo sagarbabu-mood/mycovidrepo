@@ -1,0 +1,117 @@
+.state-specific-name-and-tested-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.state-specific-name-container {
+  display: inline-flex;
+  padding: 5.271px 10.541px;
+  align-items: flex-start;
+  flex-shrink: 0;
+  border-radius: 16px;
+  margin-bottom: 12px;
+  background: var(--Light-Transparent-Light-Blue-16, rgba(2, 132, 199, 0.16));
+}
+
+@media screen and (min-width: 768px) {
+  .state-specific-name-container {
+    display: flex;
+    width: 312px;
+    height: 64px;
+    justify-content: center;
+    padding: 10.541px 21.082px;
+    align-items: center;
+    text-align: center;
+    border-radius: 32px;
+  }
+}
+
+.state-specific-name {
+  color: var(--Light-light-blue-500, #0ea5e9);
+  font-family: Roboto;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px; /* 150% */
+}
+@media screen and (min-width: 768px) {
+  .state-specific-name {
+    color: var(--Light-light-blue-500, #0ea5e9);
+    font-family: 'HK Grotesk', sans-serif;
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 48px; /* 150% */
+    color: #0ea5e9;
+  }
+}
+
+.state-specific-date {
+  color: var(--Light-blue-gray-300, #cbd5e1);
+  font-family: Roboto;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 16px; /* 133.333% */
+}
+
+@media screen and (min-width: 768px) {
+  .state-specific-date {
+    color: var(--Light-blue-gray-300, #cbd5e1);
+    font-family: Roboto;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px; /* 133.333% */
+  }
+}
+
+.state-specific-tested-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  text-align: end;
+}
+
+.state-specific-tested {
+  color: var(--Light-blue-gray-400, #94a3b8);
+  font-family: Roboto;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 16px; /* 133.333% */
+}
+
+.state-specific-tested-count {
+  color: var(--Light-blue-gray-400, #94a3b8);
+  text-align: right;
+  font-family: Roboto;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 24px; /* 150% */
+  margin-top: 8px;
+}
+
+@media screen and (min-width: 768px) {
+  .state-specific-tested {
+    color: var(--Light-blue-gray-400, #94a3b8);
+    font-family: Roboto;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 24px; /* 150% */
+  }
+  .state-specific-tested-count {
+    color: var(--Light-blue-gray-400, #94a3b8);
+    text-align: right;
+    font-family: Roboto;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 24px; /* 100% */
+  }
+}
