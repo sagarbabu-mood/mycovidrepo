@@ -17,18 +17,109 @@
   border-radius: 12px;
 }
 
-.confirmed- {
+.confirmed {
   background-color: #331427;
 }
 
-.active- {
+.active {
   background-color: #132240;
 }
 
-.recovered- {
+.recovered {
   background-color: #182829;
 }
 
-.deceased- {
+.deceased {
   background-color: #212230;
+}
+
+.confirmed- {
+  color: #ff073a;
+}
+
+.active- {
+  color: #007bff;
+}
+
+.recovered- {
+  color: #28a745;
+}
+
+.deceased- {
+  color: #6c757d;
+}
+
+.districts-heading {
+  font-family: 'Roboto';
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 32px; /* 133.333% */
+  margin-bottom: 35px;
+  margin-top: 35px;
+}
+
+@media screen and (min-width: 768px) {
+  .districts-heading {
+    font-size: 32px;
+    line-height: 48px; /* 150% */
+  }
+}
+
+.districts-main-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.districts-inner-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.district-item {
+  display: flex;
+  flex-direction: row;
+  margin-right: 20px;
+  margin-bottom: 20px;
+  align-items: center;
+}
+
+/* @media screen and (min-width: 768px) {
+  .district-item {
+    width: 40%;
+  }
+} */
+
+.district-count {
+  color: var(--Light-blue-gray-400, #94a3b8);
+  font-family: 'Roboto';
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  margin-right: 16px;
+}
+
+@media screen and (min-width: 768px) {
+  .district-count {
+    font-size: 24px;
+    margin-right: 21px;
+  }
+}
+
+.district-name {
+  color: var(--Light-blue-gray-400, #94a3b8);
+  font-family: 'Roboto';
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+
+@media screen and (min-width: 768px) {
+  .district-name {
+    font-size: 16px;
+  }
 }

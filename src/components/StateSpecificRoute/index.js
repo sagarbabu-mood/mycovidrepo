@@ -185,6 +185,9 @@ class StateSpecificRoute extends Component {
             ? data[keyName].meta.population
             : 0
           const lastUpdated = data[keyName].meta.last_updated
+
+          const {districts} = data[keyName]
+
           let stateName
           const name = statesList.find(state => state.state_code === keyName)
           if (name !== undefined) {
@@ -200,6 +203,7 @@ class StateSpecificRoute extends Component {
             population,
             lastUpdated,
             active: confirmed - (deceased + recovered),
+            districts,
           })
         }
       })
@@ -211,7 +215,6 @@ class StateSpecificRoute extends Component {
     const respectiveStateValue = listFormattedDataUsingForInMethod.find(
       each => each.stateCode === stateCode,
     )
-    console.log(listFormattedDataUsingForInMethod, respectiveStateValue)
     this.setState({isLoading: false, specificStateData: respectiveStateValue})
     // console.log(respectiveStateValue)
   }
@@ -235,7 +238,6 @@ class StateSpecificRoute extends Component {
     }
 
     const formattedDate = date.toLocaleDateString('en-US', options)
-    //  console.log(formattedDate)
     const dayWithoutComma = new Array(formattedDate.replace(',', '').split(' '))
     dayWithoutComma[0][1] = dayWithOrdinal(date.getDate())
 
