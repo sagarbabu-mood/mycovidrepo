@@ -19,8 +19,8 @@
 @media screen and (min-width: 768px) {
   .state-specific-name-container {
     display: flex;
-    width: 312px;
-    height: 64px;
+    /* width: 312px;
+    height: 64px; */
     justify-content: center;
     padding: 10.541px 21.082px;
     align-items: center;

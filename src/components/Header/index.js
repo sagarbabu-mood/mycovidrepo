@@ -1,12 +1,9 @@
 import {Component} from 'react'
 import {Link, withRouter} from 'react-router-dom'
-import {ImMenu4} from 'react-icons/im'
 
 import './index.css'
 
 class Header extends Component {
-  state = {showNavigationContainer: false}
-
   render() {
     const {location} = this.props
     const {pathname} = location

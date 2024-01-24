@@ -154,7 +154,7 @@ const statesList = [
 ]
 
 class StateSpecificRoute extends Component {
-  state = {isLoading: true, specificStateData: {}, activeCard: 'CONFIRMED'}
+  state = {isLoading: true, specificStateData: {}}
 
   componentDidMount() {
     this.getStateWiseCovidData()
@@ -211,6 +211,7 @@ class StateSpecificRoute extends Component {
     const respectiveStateValue = listFormattedDataUsingForInMethod.find(
       each => each.stateCode === stateCode,
     )
+    console.log(listFormattedDataUsingForInMethod, respectiveStateValue)
     this.setState({isLoading: false, specificStateData: respectiveStateValue})
     // console.log(respectiveStateValue)
   }
@@ -257,7 +258,7 @@ class StateSpecificRoute extends Component {
   }
 
   render() {
-    const {isLoading, specificStateData, activeCard} = this.state
+    const {isLoading, specificStateData} = this.state
     return (
       <>
         <Header />
@@ -269,10 +270,7 @@ class StateSpecificRoute extends Component {
           ) : (
             <div className="search-main-container">
               {this.displayStateNameAndTestedCount()}
-              <DisplayCards
-                specificStateData={specificStateData}
-                activeCard={activeCard}
-              />
+              <DisplayCards specificStateData={specificStateData} />
             </div>
           )}
           <Footer />

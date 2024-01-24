@@ -1,0 +1,34 @@
+.state-specific-cards-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+  margin-top: 20px;
+  flex-wrap: wrap;
+}
+
+.state-specific-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  max-width: 25%;
+  padding: 50px;
+  border-radius: 12px;
+}
+
+.confirmed- {
+  background-color: #331427;
+}
+
+.active- {
+  background-color: #132240;
+}
+
+.recovered- {
+  background-color: #182829;
+}
+
+.deceased- {
+  background-color: #212230;
+}
