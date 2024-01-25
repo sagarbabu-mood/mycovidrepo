@@ -1,15 +1,18 @@
 import {Component} from 'react'
-import {
-  LineChart,
-  XAxis,
-  YAxis,
-  CartesianGrid,
-  Tooltip,
-  Legend,
-  Line,
-  BarChart,
-  Bar,
-} from 'recharts'
+
+import DisplayBarCharts from '../DisplayBarCharts'
+
+// import {
+//   LineChart,
+//   XAxis,
+//   YAxis,
+//   CartesianGrid,
+//   Tooltip,
+//   Legend,
+//   Line,
+//   BarChart,
+//   Bar,
+// } from 'recharts'
 
 import './index.css'
 
@@ -202,31 +205,16 @@ class DisplayCards extends Component {
     )
   }
 
-  displayBarChart = districtsData => {
-    const {activeCard} = this.state
-    return (
-      <BarChart width={800} height={450} data={districtsData}>
-        <XAxis dataKey="date" />
-        <YAxis />
-        <Tooltip />
-        <Legend />
-        <Bar
-          dataKey={activeCard}
-          fill="#8884d8"
-          className="bar"
-          label={{position: 'top', color: `${activeCard}-`}}
-        />
-      </BarChart>
-    )
-  }
-
   render() {
+    const {activeCard} = this.state
+    const {specificStateData} = this.props
+    const {stateCode} = specificStateData
     const districtsData = this.convertObjectsDataIntoListItemsUsingForInMethod()
     return (
       <>
         {this.displayEachCard()}
         {this.displayTopDistricts(districtsData)}
-        {this.displayBarChart(districtsData)}
+        <DisplayBarCharts activeCard={activeCard} stateCode={stateCode} />
       </>
     )
   }

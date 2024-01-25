@@ -247,7 +247,7 @@ class StateSpecificRoute extends Component {
       <div className="state-specific-name-and-tested-container">
         <div className="state-specific-name-and-date-container">
           <div className="state-specific-name-container">
-            <p className="state-specific-name">{stateName}</p>
+            <h1 className="state-specific-name">{stateName}</h1>
           </div>
           <p className="state-specific-date">{resultDate}</p>
         </div>

@@ -7,15 +7,15 @@ const SearchItem = props => {
   const {stateName, stateCode} = stateDetails
   return (
     <>
-      <li className="search-item">
-        <Link className="state-link" to={`/state/${stateCode}`}>
+      <Link className="state-link" to={`/state/${stateCode}`}>
+        <li className="search-item">
           <p className="search-item-state-name">{stateName}</p>
           <div className="state-code-container">
             <p className="search-item-code">{stateCode}</p>
             <BiChevronRightSquare color="#facc15" size={20} />
           </div>
-        </Link>
-      </li>
+        </li>
+      </Link>
       <hr className="search-item-break" />
     </>
   )
