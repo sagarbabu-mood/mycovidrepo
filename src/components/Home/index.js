@@ -362,7 +362,7 @@ class Home extends Component {
       >
         <div className="covid-data-table-header">
           <div className="state-ut-icons-container">
-            <p className="states-ut">States/UT</p>
+            <p className="states-ut table-heading">States/UT</p>
             <button
               testid="ascendingSort"
               className="button-icon"
@@ -380,11 +380,11 @@ class Home extends Component {
               <FcGenericSortingDesc />
             </button>
           </div>
-          <p>Confirmed</p>
-          <p>Active</p>
-          <p>Recovered</p>
-          <p>Deceased</p>
-          <p>Population</p>
+          <p className="table-heading">Confirmed</p>
+          <p className="table-heading">Active</p>
+          <p className="table-heading">Recovered</p>
+          <p className="table-heading">Deceased</p>
+          <p className="table-heading">Population</p>
         </div>
         <hr className="covid-data-table-hr-line" />
         <ul className="covid-data-table-stats">

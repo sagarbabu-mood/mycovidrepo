@@ -1,5 +1,15 @@
 .search-item {
   padding: 10px 10px 0 10px;
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.state-link:hover {
+  background-color: #94a3b8; /* Change the background color on hover */
+  cursor: pointer; /* Change the cursor to a pointer on hover */
 }
 
 .state-link {
@@ -7,10 +17,6 @@
   width: 100%;
   background-color: #161625;
   border: 0;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
   margin-top: 4px;
 }
 
@@ -41,7 +47,7 @@
 }
 
 .search-item-break {
-  border: 0.3px solid #64748b;
+  border: 0.1px solid #64748b;
   color: #64748b;
   width: 100%;
   margin-top: 3px;

@@ -146,24 +146,24 @@
   box-shadow: 0px 4px 16px 0px #00000029;
   background: linear-gradient(0deg, #1e1e30, #1e1e30);
   border-radius: 6px;
-  overflow-x: scroll;
   scrollbar-width: thin;
   scrollbar-color: transparent transparent;
   height: 100%;
+  overflow-x: scroll;
 }
 
 @media (max-width: 768px) {
   .state-wise-covid-data-table {
-    width: 85vw;
+    width: 90%;
   }
 }
 
 .covid-data-table-header {
-  width: 100vw;
+  width: 90vw;
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
   align-items: center;
-  justify-content: space-around;
   color: #f8fafc;
   font-family: 'Roboto';
   font-size: 16px;
@@ -172,17 +172,14 @@
   letter-spacing: 0em;
   text-align: left;
   height: 50px;
+  padding: 30px;
 }
 
-/* @media screen and (min-width: 768px) {
+@media screen and (min-width: 768px) {
   .covid-data-table-header {
-    font-size: 16px;
-    font-weight: 700;
-    line-height: 24px;
-    letter-spacing: 0em;
-    text-align: left;
+    padding: 20px;
   }
-} */
+}
 
 .state-ut-icons-container {
   display: flex;
@@ -198,15 +195,15 @@
   border: 1px solid #475569;
   color: #475569;
   height: 1px;
-  width: 100vw;
+  width: 100%;
 }
 
 .covid-data-table-stats-container {
-  width: 100vw;
+  width: 100%;
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-between;
   color: #f8fafc;
   font-family: 'Roboto';
   font-size: 14px;
@@ -218,7 +215,7 @@
   margin-top: 15px;
 }
 
-.covid-data-table-state-names {
+/* .covid-data-table-state-names {
   width: 190px;
   font-family: 'Roboto';
   font-size: 14px;
@@ -281,8 +278,7 @@
   color: #6c757d;
   padding-left: 0;
   padding-top: 10px;
-}
-
+} */
 
 .button-icon {
   background: transparent;
@@ -292,6 +288,24 @@
   margin-top: 4px;
 }
 
-.covid-data-table-stats{
-    padding-left: 0;
+.covid-data-table-stats {
+  /* padding-left: 20px; */
+  padding: 20px;
+}
+
+@media screen and (min-width: 768px) {
+  .covid-data-table-stats {
+    padding-left: 30px;
+  }
+}
+
+.table-heading {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 24px;
+  color: #f8fafc;
+  text-align: right;
+  min-width: 20%;
 }
